@@ -1,0 +1,57 @@
+{% load crispy_forms_tags %}
+
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header font-weight-bold">
+                    Commander
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <input class="btn btn-info btn-block" type="submit" value="Faire une commande">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header font-weight-bold">
+                    Commandes passées
+                </div>
+                <div class="card-body">
+                    <table class="table bg-white table-hover">
+                        <thead class="bg-info text-white">
+                            <tr>
+                                <th scope="col">Produit</th>
+                                <th scope="col">Catégorie</th>
+                                <th scope="col">Quantité</th>
+                                <th scope="col">Date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                            {% if order.staff == user %}
+                            <tr>
+                                <td>{{ order.produit.nom }}</td>
+                                <td>{{ order.produit.catégorie }}</td>
+                                <td>{{ order.commande_quantité }}</td>
+                                <td>{{ order.date|date:"d M Y H:i" }}</td>
+                                <td>
+                                    {% if order.treated %}
+                                    <i class="fa-solid fa-check"></i>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
