@@ -1,8 +1,17 @@
-body{
+body {
     background: rgb(230, 227, 227);
 }
 
-.my-card:hover{
+.my-card:hover {
     transform: scale(1.1);
     transition: 0.2s ease-in-out;
+}
+
+.transparent-button {
+    background-color: transparent;
+    border: none;
+    padding: 3;
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
 }

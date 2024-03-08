@@ -1,15 +1,3 @@
-
-<style>
-    .transparent-button {
-        background-color: transparent;
-        border: none;
-        padding: 3;
-        cursor: pointer;
-        color: inherit;
-        text-decoration: none;
-    }
-</style>
-
 <nav class="navbar navbar-expand-lg navbar-info bg-info">
     {% if user.is_authenticated %}
     <div class="container">
@@ -34,7 +22,7 @@
                 <li class="nav-item">
                     <form action="{% url 'user-logout'%}" method="post">
                         {% csrf_token %}
-                        <button type="submit" class="transparent-button nav-link text-white">Déconnexion</button>
+                        <button type="submit" class="btn transparent-button nav-link text-white">Déconnexion</button>
                     </form>
                 </li>
             </ul>

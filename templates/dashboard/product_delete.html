@@ -9,7 +9,7 @@
                 <h3>Supprimer l'article</h3>
                 <hr>
                 <div class="alert alert-danger">
-                    <h4>Voulez-vous supprimer cet article ?</h4>
+                    <h4>Voulez-vous supprimer "{{ item.nom }}"?</h4>
                 </div>
                 <form method="POST">
                     {% csrf_token %}

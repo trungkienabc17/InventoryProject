@@ -93,7 +93,7 @@ def product(request):
                     messages.success(request, mark_safe(f'La quantié du <strong>{product_name}</strong> a été mise à jour. <strong>{existing_product.quantité}</strong> en stock.'))
             else:
                 form.save()
-                messages.success(request, mark_safe(f'<strong>{product_name}</strong> a été ajouté. <strong>{product_quantity}</strong> en stock.'))
+                messages.success(request, mark_safe(f'<strong>{product_name}</strong> a été ajouté.'))
             return redirect('dashboard-product')
     else:
         form = ProductForm()
@@ -113,7 +113,10 @@ def product_delete(request, pk):
     if request.method == 'POST':
         item.delete()
         return redirect('dashboard-product')
-    return render(request, 'dashboard/product_delete.html')
+    context = {
+        'item': item,
+    }
+    return render(request, 'dashboard/product_delete.html', context)
 
 @login_required
 def product_update(request, pk):
