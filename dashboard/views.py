@@ -131,7 +131,7 @@ def product_update(request, pk):
     context = {
         'form': form,
     }
-    return render(request, 'dashboard/product_update.html',context)
+    return render(request, 'dashboard/product_update.html', context)
 
 
 # COMMANDES
